@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:textSize="24sp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="#4D4949"
             />
 
 
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:textSize="24sp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="#393939"
             />
 
 
@@ -147,7 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:textSize="24sp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="#3B3B3B"
             />
 
 
@@ -189,7 +189,7 @@
             android:layout_rowSpan="2"
             android:layout_columnWeight="1"
             android:textSize="24sp"
-            android:backgroundTint="@color/black" />
+            android:backgroundTint="#323232" />
 
 
         <Button
@@ -200,7 +200,7 @@
             android:layout_columnSpan="4"
             android:layout_columnWeight="3"
             android:textSize="24sp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="#343434"
             />
 
         <Button
