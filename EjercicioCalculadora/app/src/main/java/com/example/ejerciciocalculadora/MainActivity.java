@@ -43,19 +43,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn7).setOnClickListener(this);
         findViewById(R.id.btn8).setOnClickListener(this);
         findViewById(R.id.btn9).setOnClickListener(this);
-
-        //Botones de operaciones básicas
-
         findViewById(R.id.btnAdd).setOnClickListener(this);
         findViewById(R.id.btnSub).setOnClickListener(this);
         findViewById(R.id.btnMul).setOnClickListener(this);
         findViewById(R.id.btnDiv).setOnClickListener(this);
-
-        // Botón del punto decimal y del igual
         findViewById(R.id.btnDot).setOnClickListener(this);
         findViewById(R.id.btnEqual).setOnClickListener(this);
-
-        // Botones de borrar todo y borrar un carácter
         findViewById(R.id.btnClearAll).setOnClickListener(this);
         findViewById(R.id.btnClearOne).setOnClickListener(this);
     }
@@ -70,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button boton = (Button) v; // Obtiene el botón pulsado
         String textoBoton = boton.getText().toString(); // Obtiene el texto del botón
 
-        // Si se presiona el botón igual
+
+        // Este if es "si se presiona el botón igual"
         if (textoBoton.equals("=")) {
             try {
                 double resultado = evalMultiple(actual); // Evalúa la expresión matemática
@@ -84,11 +78,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 texto1.setText("Error"); // Muestra error si algo falla
             }
 
-            // Si se presiona el botón "C" (Clear All)
+            // Si se presiona el botón "C" se borra todo
         } else if (textoBoton.equals("C")) {
             texto1.setText("0");
 
-            // Si se presiona el botón de borrar un carácter (⌫)
+            // Si se presiona el botón de borrar un carácter borra solo un caracter
         } else if (textoBoton.equals("⌫")) {
             if (actual.length() > 1) {
                 texto1.setText(actual.substring(0, actual.length() - 1)); // Borra último carácter
@@ -97,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         } else {
-            // Si el texto actual es "0" y se presiona un número (no un punto)
+            // Si el texto actual es "0" y se presiona un número
             if (actual.equals("0") && !textoBoton.equals(".")) {
                 texto1.setText(textoBoton); // Reemplaza el 0 por el nuevo número
 
@@ -122,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private String obtenerUltimoNumero(String texto) {
         String[] tokens = texto.split("[+\\-*/]");
-        return tokens[tokens.length - 1]; // Devuelve el último número ingresado
+        return tokens[tokens.length - 1]; // Devuelve el último número ingresado quitando los operadores
     }
 
     /**
@@ -134,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private double evalMultiple(String expr) throws Exception {
         expr = expr.replace(" ", ""); // Elimina espacios
 
-        // Si empieza con signo negativo, agrega un 0 al principio
+        // Si empieza con operador negativo, agrega un 0 al principio
         if (expr.startsWith("-")) {
             expr = "0" + expr;
         }
