@@ -21,13 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="4"
-        android:rowCount="5"
+        android:rowCount="4"
         android:layout_marginTop="16dp"
         android:alignmentMode="alignMargins"
         android:rowOrderPreserved="false"
         android:useDefaultMargins="true">
 
-        <!-- Primera fila -->
+
         <Button
             android:id="@+id/btnClearAll"
             android:text="C"
@@ -194,15 +194,12 @@
 
         <Button
             android:id="@+id/btn0"
-            android:text="0"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_columnSpan="4"
-            android:layout_columnWeight="3"
-            android:textSize="24sp"
-            android:backgroundTint="#343434"
-            />
-
+            android:layout_columnWeight="1"
+            android:backgroundTint="#000000"
+            android:text="0"
+            android:textSize="24sp" />
         <Button
             android:id="@+id/btnDot"
             android:text="."
@@ -212,6 +209,11 @@
             android:textSize="24sp"
             android:backgroundTint="@color/black"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="2"
+        />
 
     </GridLayout>
 
