@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculadora); // Asigna el layout de la calculadora
+        setContentView(R.layout.calculadora);
 
         // Referencia al TextView que muestra los datos
         texto1 = findViewById(R.id.txt);
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (actual.length() > 1) {
                 texto1.setText(actual.substring(0, actual.length() - 1)); // Borra último carácter
             } else {
-                texto1.setText("0"); // Si queda uno solo, vuelve a 0
+                texto1.setText("0"); // Si queda vacio, vuelve a 0
             }
 
         } else {
