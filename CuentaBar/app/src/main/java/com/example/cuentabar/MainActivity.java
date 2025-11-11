@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
         btnCalcular = findViewById(R.id.btnCalcular);
         autoCamarero = findViewById(R.id.autoCamarero);
 
-        // Autocompletado para camarero
+
         String[] camareros = {"Carlos", "María", "Lucía", "José", "Ana"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, camareros);
         autoCamarero.setAdapter(adapter);
 
-        // Listener SeekBar
+
         seekPropina.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        // Botón calcular
+
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
