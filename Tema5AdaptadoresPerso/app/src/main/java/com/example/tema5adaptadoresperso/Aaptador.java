@@ -1,4 +1,30 @@
 package com.example.tema5adaptadoresperso;
 
-public class Aaptador {
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+
+public class Aaptador extends ArrayAdapter<Datos> {
+    private Datos[] datos;
+
+
+    public Aaptador(@NonNull Context context, Datos[]datos) {
+        super(context, R.layout.elemento, datos);
+        this.datos=datos;
+    }
+
+    public View getView(int position, View convertView, ViewGroup parent){
+        LayoutInflater mostrado=LayoutInflater.from(getContext());
+        View elemento=mostrado.inflate(R.layout.elemento,parent,false);
+        TextView text1=elemento.findViewById(R.id.text1);
+        TextView text2=elemento.findViewById(R.id.text2);
+        text1.setText(datos[position].getTexto1());
+        text2.setText(datos[position].getTexto2());
+        return elemento;
+    }
 }

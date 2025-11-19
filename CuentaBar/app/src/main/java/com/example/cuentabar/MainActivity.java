@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         if (camarero.isEmpty()) camarero = "No especificado";
 
         String resultado = String.format(
-                "💰 Total: %.2f €\nMétodo de pago: %s\nPropina: %.2f €\nCamarero: %s\n⭐ Calificación: %.1f estrellas",
+                " Total: %.2f €\nMétodo de pago: %s\nPropina: %.2f €\nCamarero: %s\n Calificación: %.1f estrellas",
                 totalFinal, metodoPago, propina, camarero, rating);
 
         textResultado.setTextColor(Color.BLACK);
