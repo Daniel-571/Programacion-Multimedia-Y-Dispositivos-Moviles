@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lista de la compra</string>
+    <string name="item_name">Nombre del artículo</string>
+    <string name="item_quantity">Cantidad</string>
+    <string name="add">Añadir</string>
+    <string name="delete">Eliminar</string>
+    <string name="quantity_format">Cantidad: %1$d</string>
+    <string name="item_image">Imagen del artículo</string>
+</resources>
