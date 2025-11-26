@@ -38,15 +38,38 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnAdd = findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(v -> {
-            String name = editName.getText().toString();
-            int quantity = Integer.parseInt(editQuantity.getText().toString());
+            String name = editName.getText().toString().trim();
+            String quantityStr = editQuantity.getText().toString().trim();
+
+
+            if (quantityStr.isEmpty()) {
+                Toast.makeText(this, "Ingresa una cantidad", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int quantity = Integer.parseInt(quantityStr);
+
+            if (quantity <= 0) {
+                Toast.makeText(this, "La cantidad debe ser mayor que 0", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (name.isEmpty()) {
+                Toast.makeText(this, "Ingresa un nombre", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             int imageRes = (int) spinnerImages.getSelectedItem();
+
             shoppingList.add(new Item(name, quantity, imageRes));
             adapter.notifyDataSetChanged();
+
+            editName.setText("");
+            editQuantity.setText("");
         });
     }
 
-    // Menú contextual
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
