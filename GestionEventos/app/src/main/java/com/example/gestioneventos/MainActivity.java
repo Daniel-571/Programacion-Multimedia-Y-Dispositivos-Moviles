@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        // Permiso de notificaciones Android 13+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -47,12 +49,20 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         listaEventos = findViewById(R.id.listaEventos);
         eventos = new ArrayList<>();
+
+        // Cargar eventos guardados
+        var guardados = getSharedPreferences("eventos", MODE_PRIVATE)
+                .getStringSet("lista", null);
+
+        if (guardados != null) {
+            eventos.addAll(guardados);
+        }
+
         adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, eventos);
         listaEventos.setAdapter(adaptador);
 
@@ -116,7 +126,19 @@ public class MainActivity extends AppCompatActivity {
         eventos.add(evento);
         adaptador.notifyDataSetChanged();
 
+
+        getSharedPreferences("eventos", MODE_PRIVATE)
+                .edit()
+                .putStringSet("lista", new HashSet<>(eventos))
+                .apply();
+
+
         mostrarNotificacion(evento);
+
+
+        new android.os.Handler().postDelayed(() -> {
+            mostrarNotificacion("Recordatorio rápido: " + evento);
+        }, 5000);
     }
 
     private void crearCanalNotificaciones() {
@@ -136,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
     private void mostrarNotificacion(String texto) {
 
         Intent intent = new Intent(this, MainActivity.class);
-
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(
@@ -155,9 +176,8 @@ public class MainActivity extends AppCompatActivity {
                 .setContentIntent(pendingIntent);
 
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
-        manager.notify(1, builder.build());
+        manager.notify((int) System.currentTimeMillis(), builder.build());
     }
-
 
     private void mostrarToastPersonalizado(String evento) {
 
