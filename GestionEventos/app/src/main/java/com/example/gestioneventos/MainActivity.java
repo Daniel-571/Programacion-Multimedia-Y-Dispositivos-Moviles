@@ -136,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
     private void mostrarNotificacion(String texto) {
 
         Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 this,
@@ -156,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
         manager.notify(1, builder.build());
     }
+
 
     private void mostrarToastPersonalizado(String evento) {
 
