@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Gestión de eventos"
+        android:textSize="38dp"
+        android:textStyle="italic"
+        android:textColor="#FF0303"
+        />
+
+    <Button
+        android:id="@+id/btnAnadir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Añadir evento"
+        android:backgroundTint="#DB2727"
+        />
+
+    <ListView
+        android:id="@+id/listaEventos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        />
+
+</LinearLayout>

@@ -37,5 +37,6 @@
         android:id="@+id/btnDelete"
         android:text="@string/delete"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:focusable="false"/>
 </LinearLayout>
